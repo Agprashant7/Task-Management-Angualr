@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/model/task';
-import { CrudService } from 'src/app/service/crud.service';
+import { AuthService } from 'src/app/service/auth/auth.sevice';
+import { CrudService } from 'src/app/service/crud/crud.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ export class DashboardComponent implements OnInit{
   addTaskValue:string='';
   editTaskValue:string='';
 
-  constructor(private crudService:CrudService){
+  constructor(private crudService:CrudService,private authService:AuthService){
  
   }
 
@@ -22,7 +23,6 @@ export class DashboardComponent implements OnInit{
     this.taskArr=[];
     this.getAllTask();
     this.editTaskValue=''
-
   }
 
   getAllTask(){

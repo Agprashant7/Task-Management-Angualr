@@ -7,13 +7,16 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { LoginComponent } from './component/login/login.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
-
+import { TodoCardCompnent } from './component/dashboard/todocard/todocard.component';
+import { TaskmanageComponent } from './component/manage/taskmanage/taskmanage.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    TodoCardCompnent,
+    TaskmanageComponent
   ],
   imports: [
     BrowserModule,

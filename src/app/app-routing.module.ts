@@ -1,8 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
-
+import { LoginComponent } from './component/login/login.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { AuthGuard } from './helpers/auth-guard.guard';
+import { TaskmanageComponent } from './component/manage/taskmanage/taskmanage.component';
+const routes: Routes = [
+  
+  {
+    path: '',
+    redirectTo:'/login',
+    pathMatch:'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'home',
+    component: DashboardComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'manageTask',
+    component: TaskmanageComponent,
+    canActivate:[AuthGuard]
+  },
+]
+// const routes:Routes=[]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

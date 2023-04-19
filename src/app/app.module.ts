@@ -9,6 +9,7 @@ import { LoginComponent } from './component/login/login.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { TodoCardCompnent } from './component/dashboard/todocard/todocard.component';
 import { TaskmanageComponent } from './component/manage/taskmanage/taskmanage.component';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { TaskmanageComponent } from './component/manage/taskmanage/taskmanage.co
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgHttpLoaderModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

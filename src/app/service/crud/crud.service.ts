@@ -11,8 +11,7 @@ export class CrudService {
 
   serviceURL:string;  
   constructor(private http:HttpClient) { 
-    console.log("##########################",environment.apiURL)
-    this.serviceURL=environment.apiURL
+    this.serviceURL='https://my-json-server.typicode.com/Agprashant7/demo-json/tasks'
 
   }
 

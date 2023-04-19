@@ -1,9 +1,7 @@
 [build]
-  command = "CI='' npm run build"
-  publish = "/build"
-  base ="/"
-
+  publish = "dist/my-app"
+  command = "ng build --prod"
 [[redirects]]
   from = "/*"
-  to = "/"
+  to = "/index.html"[build]
   status = 200

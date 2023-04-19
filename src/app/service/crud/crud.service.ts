@@ -11,7 +11,7 @@ export class CrudService {
 
   serviceURL:string;  
   constructor(private http:HttpClient) { 
-    this.serviceURL='https://my-json-server.typicode.com/Agprashant7/demo-json/tasks'
+    this.serviceURL='https://643fd869b9e6d064be006110.mockapi.io/tasks/task'
 
   }
 

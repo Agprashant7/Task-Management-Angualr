@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit{
     this.taskObj.task_name=this.addTaskValue;
     this.taskObj.dueDate=this.addDueDate
     this.crudService.addTasks(this.taskObj).subscribe(res=>{
-      this.ngOnInit();
+       this.ngOnInit();
       this.addTaskValue=''
       this.addDueDate
     },err=>{
@@ -48,8 +48,10 @@ export class DashboardComponent implements OnInit{
   }
 
   editTask(taskObj:Task){
+    console.log("*************",taskObj)
     // this.taskObj.task_name=this.editTaskValue
     this.crudService.editTask(taskObj).subscribe(res=>{
+      console.log(res)
       this.ngOnInit();
     },err=>{
       alert("FAILDED TO EDIT")

@@ -4,6 +4,8 @@ import { LoginComponent } from './component/login/login.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { AuthGuard } from './helpers/auth-guard.guard';
 import { TaskmanageComponent } from './component/manage/taskmanage/taskmanage.component';
+import { SignupComponent } from './component/signup/signup.component';
+
 const routes: Routes = [
   
   {
@@ -25,6 +27,10 @@ const routes: Routes = [
     component: TaskmanageComponent,
     canActivate:[AuthGuard]
   },
+  {
+    path:'signup',
+    component:SignupComponent
+  }
 ]
 // const routes:Routes=[]
 @NgModule({

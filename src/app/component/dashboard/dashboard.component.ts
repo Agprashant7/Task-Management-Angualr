@@ -26,17 +26,18 @@ export class DashboardComponent implements OnInit{
     this.editTaskValue=''
   }
 
-
   getAllTask(){
-    this.crudService.getAllTask().subscribe(res=>{
-      this.taskArr=res;
+    this.crudService.getAllTask().subscribe((res:any)=>{
+   
+      this.taskArr=res.data;
     },err=>{
       alert("UNABLE TO GET LIST")
     })
   }
   addTask(){
-    this.taskObj.task_name=this.addTaskValue;
-    this.taskObj.dueDate=this.addDueDate
+    this.taskObj.taskName=this.addTaskValue;
+    this.taskObj.dueDate=this.addDueDate;
+    this.taskObj.date=new Date()
     this.crudService.addTasks(this.taskObj).subscribe(res=>{
        this.ngOnInit();
       this.addTaskValue=''
@@ -48,10 +49,9 @@ export class DashboardComponent implements OnInit{
   }
 
   editTask(taskObj:Task){
-    console.log("*************",taskObj)
+   
     // this.taskObj.task_name=this.editTaskValue
     this.crudService.editTask(taskObj).subscribe(res=>{
-      console.log(res)
       this.ngOnInit();
     },err=>{
       alert("FAILDED TO EDIT")

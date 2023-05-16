@@ -1,9 +1,9 @@
 export class Task {
-    id:number=0;
-    task_name:string=''
-    date:Date=new Date();
-    dueDate:Date=new Date();
+    taskId!:string;
+    taskName:string=''
+    date!: Date | string;
+    dueDate!:Date;
     status:string='Assigned';
     comment:string='';
-    lastModified:Date=new Date()
+    lastModified: Date | '' = "";
 }

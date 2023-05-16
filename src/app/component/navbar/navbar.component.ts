@@ -7,15 +7,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private authService:AuthService,private router:Router){}
+  currentRoute:any=''
+  constructor(private authService:AuthService,private router:Router){
+    
+  }
   // @Input() logStatus:boolean=false; // decorate the property with @Input()
   @Output() countChanged=new EventEmitter();
   logStatus=this.authService.isLoggedIn()
   ngOnInit(){
     this.logStatus=this.authService.isLoggedIn()
+    
   }
   ngDoCheck(){
     this.logStatus=this.authService.isLoggedIn()
+    this.currentRoute=this.router.url
+    console.log('current route',this.currentRoute)
   }
 
   onLogOut(){

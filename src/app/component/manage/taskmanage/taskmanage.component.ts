@@ -30,8 +30,8 @@ export class TaskmanageComponent {
   }
 
   getAllTask(){
-    this.crudService.getAllTask().subscribe(res=>{
-      this.taskArr=res;
+    this.crudService.getAllTask().subscribe((res:any)=>{
+      this.taskArr=res.data;
     },err=>{
       alert("UNABLE TO GET LIST")
     })

@@ -10,6 +10,9 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { TodoCardCompnent } from './component/dashboard/todocard/todocard.component';
 import { TaskmanageComponent } from './component/manage/taskmanage/taskmanage.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { SignupComponent } from './component/signup/signup.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +20,9 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     LoginComponent,
     NavbarComponent,
     TodoCardCompnent,
-    TaskmanageComponent
+    TaskmanageComponent,
+    SignupComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -26,6 +31,8 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     HttpClientModule,
     ReactiveFormsModule,
     NgHttpLoaderModule.forRoot(),
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

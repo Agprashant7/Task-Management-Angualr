@@ -19,7 +19,7 @@ import { Task } from 'src/app/model/task';
    taskArr:Task[]=[]
    addTaskValue:string='';
    editTaskValue:string='';
-   editDueDate!:Date;
+   editDueDate:Date=new Date()
 
    constructor(){
    }
@@ -32,6 +32,7 @@ import { Task } from 'src/app/model/task';
   //source alters that data in a detectable manner, it passes through the @Input property again.
 
   ngOnChanges(){
+
     this.taskArr=this.taskArray
   }
 
@@ -40,14 +41,14 @@ import { Task } from 'src/app/model/task';
   }
 
   editTask(){
-    this.taskObj.task_name=this.editTaskValue
+    this.taskObj.taskName=this.editTaskValue
     this.taskObj.dueDate=this.editDueDate
     this.editObj.emit(this.taskObj)
   }
 
   call(etask:Task){
     this.taskObj=etask
-    this.editTaskValue=etask.task_name
+    this.editTaskValue=etask.taskName
     this.editDueDate=etask.dueDate
   }
   }

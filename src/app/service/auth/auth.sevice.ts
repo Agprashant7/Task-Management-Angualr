@@ -20,11 +20,11 @@ export class AuthService {
     }
 
     login(data: Login):Observable<Login> {
-        return this.http.post<Login>(`${this.serviceURL}signin`,data, {observe: 'response' as 'body'})
+        return this.http.post<Login>(`${this.serviceURL}/signin`,data, {observe: 'response' as 'body'})
     }
 
     signUp(data:SignUp):Observable<SignUp> {
-        return this.http.post<SignUp>(`${this.serviceURL}signup`,data, {observe: 'response' as 'body'})
+        return this.http.post<SignUp>(`${this.serviceURL}/signup`,data, {observe: 'response' as 'body'})
     }
     
     isLoggedIn(): boolean {

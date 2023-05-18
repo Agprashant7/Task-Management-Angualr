@@ -20,14 +20,14 @@ export class CrudService {
      let headers = new Headers();
      let token =  localStorage.getItem('token');
   
-    return this.http.post<Task>(`${this.serviceURL}/addTask`,task,{
+    return this.http.post<Task>(`${this.serviceURL}addTask`,task,{
       headers: new HttpHeaders().set('Authorization',token?token:'')
   })
   }
   getAllTask():Observable<Task[]>{
     let headers = new Headers();
     let token =  localStorage.getItem('token');
-    return this.http.get<Task[]>(`${this.serviceURL}/getTask`,{
+    return this.http.get<Task[]>(`${this.serviceURL}getTask`,{
       headers: new HttpHeaders().set('Authorization',token?token:'')
   })
   }
@@ -37,14 +37,14 @@ export class CrudService {
     
     let headers = new Headers();
     let token =  localStorage.getItem('token');
-    return this.http.delete<Task>(this.serviceURL+'/deleteTask',{
+    return this.http.delete<Task>(this.serviceURL+'deleteTask',{
       headers: new HttpHeaders().set('Authorization',token?token:''),params
   },)
   }
   editTask(task:Task):Observable<Task>{
     let headers = new Headers();
     let token =  localStorage.getItem('token');
-    return this.http.put<Task>(this.serviceURL+'/editTask',task,{
+    return this.http.put<Task>(this.serviceURL+'editTask',task,{
       headers: new HttpHeaders().set('Authorization',token?token:'')
   })
   }

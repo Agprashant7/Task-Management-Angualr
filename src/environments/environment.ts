@@ -1,6 +1,6 @@
-const apiHost = 'https://taskbackend-nskp.onrender.com';
-const authUrl = `http://${apiHost}/api`;
-const taskUrl=`http://${apiHost}/task`;
+const apiHost = 'taskbackend-nskp.onrender.com';
+const authUrl = `https://${apiHost}/api`;
+const taskUrl=`https://${apiHost}/task`;
 
 export const environment = {
   apiHost,

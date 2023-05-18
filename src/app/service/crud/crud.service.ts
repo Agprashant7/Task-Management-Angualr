@@ -2,7 +2,7 @@ import { HttpClient,HttpHeaders,HttpParams   } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Task } from '../../model/task';
 import { Observable } from 'rxjs';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class CrudService {
   serviceURL:string;  
   constructor(private http:HttpClient) { 
     // this.serviceURL='https://643fd869b9e6d064be006110.mockapi.io/tasks/task'
-    this.serviceURL='http://localhost:5000/task'
+    this.serviceURL=environment.taskUrl
 
   }
 

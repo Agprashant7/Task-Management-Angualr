@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Login } from 'src/app/model/login';
 import { map } from 'rxjs/operators';
 import { SignUp } from 'src/app/model/signUp';
+import {environment} from '../../../environments/environment'
 @Injectable({
     providedIn: 'root',
   })
@@ -15,7 +16,7 @@ export class AuthService {
         private router: Router,
         private http:HttpClient
     ) {
-        this.serviceURL='http://localhost:5000/api/'
+        this.serviceURL=environment.authUrl
     }
 
     login(data: Login):Observable<Login> {

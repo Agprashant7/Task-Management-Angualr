@@ -1,12 +1,13 @@
+import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Task } from 'src/app/model/task';
-
+import {format } from 'date-fns'
 
 
 @Component({
     selector: 'app-todocard',
     templateUrl: './todocard.component.html',
-    // styleUrls: ['./todocard.component.css']
+    styleUrls: ['./todocard.component.css']
   })
 
   export class TodoCardCompnent{
@@ -19,7 +20,7 @@ import { Task } from 'src/app/model/task';
    taskArr:Task[]=[]
    addTaskValue:string='';
    editTaskValue:string='';
-   editDueDate:Date=new Date()
+   editDueDate!:Date | string;
 
    constructor(){
    }
@@ -41,12 +42,17 @@ import { Task } from 'src/app/model/task';
   }
 
   editTask(){
+    console.log(this.taskObj)
     this.taskObj.taskName=this.editTaskValue
     this.taskObj.dueDate=this.editDueDate
+    console.log(this.taskObj)
     this.editObj.emit(this.taskObj)
   }
 
   call(etask:Task){
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!',new Date(etask.dueDate).getFullYear())
+    // console.log('!!!!!!!!!!!!!!!!!!!!!!!!!',new Date(etask.dueDate).getMonth())
+    const formatDate=`${new Date(etask.dueDate).getFullYear()}-${new Date(etask.dueDate).getMonth()}-${new Date(etask.dueDate).getDate()}`
     this.taskObj=etask
     this.editTaskValue=etask.taskName
     this.editDueDate=etask.dueDate

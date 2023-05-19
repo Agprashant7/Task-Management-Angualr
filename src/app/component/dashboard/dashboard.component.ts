@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/model/task';
 import { AuthService } from 'src/app/service/auth/auth.sevice';
 import { CrudService } from 'src/app/service/crud/crud.service';
-
+import { ToasterService, toastPayload } from '../../service/common/toaster.service';
+import { IndividualConfig } from 'ngx-toastr';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,8 +15,9 @@ export class DashboardComponent implements OnInit{
   addTaskValue:string='';
   addDueDate!:Date;
   editTaskValue:string='';
+  toast!: toastPayload;
 
-  constructor(private crudService:CrudService,private authService:AuthService){
+  constructor(private crudService:CrudService,private authService:AuthService,private toaster: ToasterService){
  
   }
 
@@ -25,13 +27,31 @@ export class DashboardComponent implements OnInit{
     this.getAllTask();
     this.editTaskValue=''
   }
+  showToaster(type: string,message:string,title:string) {
+    this.toast = {
+      message: message,
+      title:title,
+      type: type,
+      ic: {
+        timeOut: 2500,
+        closeButton: true,
+      } as IndividualConfig,
+    };
+    this.toaster.showToast(this.toast);
+  }
 
   getAllTask(){
     this.crudService.getAllTask().subscribe((res:any)=>{
-   
       this.taskArr=res.data;
     },err=>{
-      alert("UNABLE TO GET LIST")
+      console.log(err)
+      if(err.status===401){
+        this.showToaster('warning','Re Login Required','Session Expired')
+      }
+      else{
+        this.showToaster('error','Something goes wrong..','Error')
+      }
+   
     })
   }
   addTask(){
@@ -43,7 +63,12 @@ export class DashboardComponent implements OnInit{
       this.addTaskValue=''
       this.addDueDate
     },err=>{
-      alert(err)
+      if(err.status===401){
+        this.showToaster('warning','Re Login Required','Session Expired')
+      }
+      else{
+        this.showToaster('error',"Something goes wrong...",'Error')
+      }
     })
 
   }
@@ -54,7 +79,12 @@ export class DashboardComponent implements OnInit{
     this.crudService.editTask(taskObj).subscribe(res=>{
       this.ngOnInit();
     },err=>{
-      alert("FAILDED TO EDIT")
+      if(err.status===401){
+        this.showToaster('warning','Re Login Required','Session Expired')
+      }
+      else{
+        this.showToaster('error',err.error.name,'Error')
+      }
     })
   }
 
@@ -64,14 +94,16 @@ export class DashboardComponent implements OnInit{
     this.crudService.deleteTask(this.taskObj).subscribe(res=>{
       this.ngOnInit();
     },err=>{
-      alert("FAILDED TO Delete")
+      if(err.status===401){
+        this.showToaster('warning','Re Login Required','Session Expired')
+      }
+      else{
+        this.showToaster('error',err.error.name,'Error')
+      }
     })
   }
 
-  // call(etask:Task){
-  //   this.taskObj=etask
-  //   this.editTaskValue=etask.task_name
-  // }
+
 
  
 }

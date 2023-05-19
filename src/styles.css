@@ -1,2 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~ngx-toastr/toastr';
+
+body{
+  
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    background-size: auto;    
+}
